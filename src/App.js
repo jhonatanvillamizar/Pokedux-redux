@@ -1,8 +1,13 @@
+
 import { useEffect, useState } from 'react';
 import { Col } from 'antd'
 import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
 import { getPokemon } from './api';
+
+
+import logo from './statics/logo.svg'
+
 import './App.css';
 
 function App() {
@@ -24,6 +29,10 @@ function App() {
         <Searcher />
       </Col>
       <PokemonList pokemons={pokemons}/>
+      <Col span={4} offset={10}>
+        <img src={logo} alt='Pokedux'/>
+      </Col>
+
     </div>
   );
 }
