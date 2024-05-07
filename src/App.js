@@ -23,7 +23,7 @@ function App() {
     };
 
     fechtPokemons();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
