@@ -3,15 +3,15 @@ import { getPokemon } from './api';
 import { getPokemonsWithDetails, setLoading } from './actions';
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Spin } from 'antd'
+import { get } from "immutable";
 import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
 import logo from './statics/logo.svg'
 import './App.css';
 
 function App() {
-
-  const pokemons = useSelector((state) => state.pokemons);
-  const loading = useSelector((state) => state.loading);
+  const pokemons = useSelector(state => get(state, 'pokemons')).toJS();
+  const loading = useSelector((state) => get(state, 'loading'));
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -43,3 +43,4 @@ function App() {
 
 
 export default App;
+
