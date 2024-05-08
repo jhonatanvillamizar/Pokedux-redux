@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { getPokemon } from './api';
 import { getPokemonsWithDetails, setLoading } from './actions';
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Col, Spin } from 'antd'
 import { get } from "immutable";
 import Searcher from './components/Searcher';
@@ -10,7 +10,10 @@ import logo from './statics/logo.svg'
 import './App.css';
 
 function App() {
-  const pokemons = useSelector(state => get(state, 'pokemons')).toJS();
+  const pokemons = useSelector(state => get(state, 'pokemons', shallowEqual)).toJS();
+
+  // cuando usamos useSelector para el saber si debe renderizar un componente o no necesita una compraracion extricta. que seria ' === '
+
   const loading = useSelector((state) => get(state, 'loading'));
   const dispatch = useDispatch();
   
